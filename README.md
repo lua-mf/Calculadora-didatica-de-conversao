@@ -20,5 +20,5 @@ Esta computadora didática pode realizar as seguintes operações, com passo a p
 - Tratamento de Exceções: O programa inclui verificações para entradas inválidas e divisão por zero, garantindo a robustez do código.
 
 ### Requisitos
-Compilador C(Recomendo GCC).
-Sistema Operacional compatível com a execução de programas C (Windows, Linux, macOS).
+- Compilador C(Recomendo GCC).
+- Sistema Operacional compatível com a execução de programas C (Windows, Linux, macOS).
