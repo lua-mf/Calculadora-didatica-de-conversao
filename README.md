@@ -15,9 +15,9 @@ Esta computadora didática pode realizar as seguintes operações, com passo a p
 - Conversão de números reais para suas representações float e double, mostrando a estrutura dos bits de sinal, expoente, expoente (com viés) e fração.
   
 ### Funcionalidades
-Interface de Linha de Comando: Simples e intuitiva, com menus para selecionar a operação desejada.
-Passo a Passo: Cada operação é detalhada, com explicações sobre os cálculos realizados, tornando o programa uma ferramenta didática para o aprendizado de conversões numéricas.
-Tratamento de Exceções: O programa inclui verificações para entradas inválidas e divisão por zero, garantindo a robustez do código.
+- Interface de Linha de Comando: Simples e intuitiva, com menus para selecionar a operação desejada.
+- Passo a Passo: Cada operação é detalhada, com explicações sobre os cálculos realizados, tornando o programa uma ferramenta didática para o aprendizado de conversões numéricas.
+- Tratamento de Exceções: O programa inclui verificações para entradas inválidas e divisão por zero, garantindo a robustez do código.
 
 ### Requisitos
 Compilador C(Recomendo GCC).
