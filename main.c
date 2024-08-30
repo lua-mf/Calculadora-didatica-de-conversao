@@ -1,3 +1,17 @@
+/*
+ * Calculadora Didática de Conversão
+ * Autor: Luana Costa Lima Maynard de Arruda Falcão
+ * Data de criação: [30/08/2024]
+ * Última atualização: [30/08/2024 às 19:03]
+ * GitHub: https://github.com/lua-mf/Calculadora-didatica-de-conversao
+ * Descrição: Este programa realiza conversões de base 10 para outras bases e representações numéricas, mostrando os passos detalhados na tela.
+ *
+ * Revisões/Atualizações:
+ * - [30/08/2024 às 18:05]: Implementação inicial.
+ * - [30/08/2024 às 18:10]: Escrita do README.
+ * - [30/08/2024 às 18:36]: Menu e criação das primeiras funções
+ * - [30/08/2024 às 19:03]: correção do Menu
+ */
 #include <stdio.h>
 #include <math.h>
 
