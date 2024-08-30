@@ -1,17 +1,3 @@
-/*
- * Calculadora Didática de Conversão
- * Autor: Luana Costa Lima Maynard de Arruda Falcão
- * Data de criação: [30/08/2024]
- * Última atualização: [30/08/2024 às 18:32]
- * GitHub: https://github.com/lua-mf/Calculadora-didatica-de-conversao
- * Descrição: Este programa realiza conversões de base 10 para outras bases e representações numéricas, mostrando os passos detalhados na tela.
- *
- * Revisões/Atualizações:
- * - [30/08/2024 às 18:05]: Implementação inicial.
- * - [30/08/2024 às 18:10]: Escrita do README.
- * - [30/08/2024 às 18:36]: Menu e criação das primeiras funções
- */
-
 #include <stdio.h>
 #include <math.h>
 
@@ -24,6 +10,7 @@ void add(Node **head, char n);
 void imprimir(Node *head);
 void conversaoBase(int n, int base, Node *head);
 void BCD(int n);
+void A216(int n, Node *head);
   
 int main(void) {
   int resposta, n, base;
@@ -41,17 +28,26 @@ int main(void) {
 
     printf("\nDigite a opcao que deseja: ");      
     scanf(" %d", &resposta);
+    printf("\nDigite um número inteiro decimal: ");
+    scanf("%d", &n);
   
-    if(resposta==1){
-      printf("\n\nDigite um número inteiro decimal: ");
-      scanf("%d", &n);
-      printf("\nqual base entre 2, 8 e 16: ");
-      scanf("%d", &base);
+    if(resposta==1 || resposta==2 || resposta==3){
+      if(resposta==1){
+        base = 2;
+      }else if(resposta==2){
+        base = 8;
+      }else if(resposta==3){
+        base = 16;
+      }
       conversaoBase(n, base, head);
       
     }else if(resposta==2){
       //BCD
       BCD(n);
+    }else if(resposta==3){
+      // base 10 para base com sinal com 16 bits
+      
+      
     }
   }while(resposta!=7);
   
