@@ -1,5 +1,4 @@
 # Calculadora Didática de Conversão
-Está é uma Calculadora Didática implementada na linguagem C. Desenvolvida para a caderia de Infraestrutura de Hardware e com o objetivo de auxiliar estudantes a entenderem melhor as conversões de diferentes bases numéricas e a representação de números e sistemas computacionais.
 
 ## Operações
 
