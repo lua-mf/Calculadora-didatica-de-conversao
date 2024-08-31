@@ -2,7 +2,7 @@
  * Calculadora Didática de Conversão
  * Autor: Luana Costa Lima Maynard de Arruda Falcão
  * Data de criação: [30/08/2024]
- * Última atualização: [30/08/2024 às 22:16]
+ * Última atualização: [30/08/2024 às 23:24]
  * GitHub: https://github.com/lua-mf/Calculadora-didatica-de-conversao
  * Descrição: Este programa realiza conversões de base 10 para outras bases e representações numéricas, mostrando os passos detalhados na tela.
  *
@@ -12,9 +12,11 @@
  * - [30/08/2024 às 18:36]: Menu e criação das primeiras funções
  * - [30/08/2024 às 19:03]: correção do Menu
  * - [30/08/2024 às 22:16]: adição da funçãod de a2
+ * - [30/08/2024 às 22:16]: adição das funções de converter_para_decimal, imprimir_float e imprimir_double
  */
 #include <stdio.h>
 #include <math.h>
+#include <stdint.h>
 
 typedef struct Node{
   char num;
@@ -26,9 +28,13 @@ void imprimir(Node *head);
 void conversaoBase(int n, int base, Node *head);
 void BCD(int n);
 void A216(int n);
+void imprimir_float(float n);
+void imprimir_double(double n);
+int converter_para_decimal(float n);
   
 int main(void) {
-  int resposta, n, base;
+  int resposta, nint, base;
+  float nfloat;
   Node *head = NULL;
   
   do{
@@ -43,10 +49,10 @@ int main(void) {
 
     printf("\nDigite a opção que deseja: ");      
     scanf(" %d", &resposta);
-    printf("\nDigite um número inteiro decimal: ");
-    scanf("%d", &n);
   
     if(resposta==1 || resposta==2 || resposta==3){
+      printf("\nDigite um número inteiro decimal: ");
+      scanf("%d", &nint);
       if(resposta==1){
         base = 2;
       }else if(resposta==2){
@@ -54,15 +60,25 @@ int main(void) {
       }else if(resposta==3){
         base = 16;
       }
-      conversaoBase(n, base, head);
+      conversaoBase(nint, base, head);
       
     }else if(resposta==4){
       //BCD
-      BCD(n);
+      printf("\nDigite um número inteiro decimal: ");
+      scanf("%d", &nint);
+      BCD(nint);
     }else if(resposta==5){
       // base 10 para base com sinal com 16 bits
-      A216(n);
-      
+      printf("\nDigite um número inteiro decimal: ");
+      scanf("%d", &nint);
+      A216(nint);
+    }else if(resposta==6){
+      printf("\nDigite um número real: ");
+      scanf("%f", &nfloat);
+      imprimir_float(nfloat);
+      imprimir_double(nfloat);
+    }else{
+      printf("\nPor favor digite o número correspondente a uma das opções!");
     }
   }while(resposta!=7);
   
@@ -207,4 +223,30 @@ void A216(int n){
     printf("%d", A216[i]);
   }
   printf("\n");
+}
+
+int converter_para_decimal(float n){
+  int decimal = (int)n;
+  return decimal;
+}
+void imprimir_float(float n) {
+    uint32_t bits = *(uint32_t *)&n;// transforma o n em um inteiro de 32 bits (uint32_t), para poder acessar os bits diretamente
+
+    printf("\nFloat:\n\n");
+    printf(" - número em decimal: %d\n", converter_para_decimal(n));
+    printf(" - sinal: %d\n", (bits >> 31) & 1); // O símbolo ">>" desloca bits para a direita
+    printf(" - expoente: %d\n", (bits >> 23) & 0xFF); 
+    printf(" - expoente com viés: %d\n", ((bits >> 23) & 0xFF) - 127); 
+    printf(" - fração: 0x%06x\n", bits & 0x7FFFFF); 
+}
+
+void imprimir_double(double n) {
+    uint64_t bits = *(uint64_t *)&n;// transforma o n em um inteiro de 64 bits (uint32_t), para poder acessar os bits diretamente
+
+    printf("\nDouble:\n\n");
+    printf(" - número em decimal: %d\n", converter_para_decimal(n));
+    printf(" - sinal: %d\n", (bits >> 63) & 1); // é deslocado 63 posições para a direita, assim pegando o bit de sinal
+    printf(" - expoente: %d\n", (bits >> 52) & 0x7FF); 
+    printf(" - expoente com viés: %d\n", ((bits >> 52) & 0x7FF) - 1023); 
+    printf(" - fração: 0x%013lx\n", bits & 0xFFFFFFFFFFFFF); 
 }
